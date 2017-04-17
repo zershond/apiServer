@@ -8,6 +8,7 @@ var pool = mysql.createPool({
     user: 'root',
     password: 'root',
     database: 'zerData',
+    charset:'UTF8_GENERAL_CI'
     port: 3306
 });
 
