@@ -6,7 +6,7 @@ var operationDB = require('../dao/inquireInDB');
 
 function  checkForAccount(res, account, fn) {console.log('checkForAccount')
     var _sql = 'select count(userAccount) from userinfo where userAccount=?';
-    operationDB.dBOperation(res, _sql, [account], function (response) {
+    operationDB.dBOperation(_sql, [account], function (response) {
         if(response.code == 1){
             console.log("response.code == 1")
             if(response.result[0]["count(userAccount)"] == 0){console.log("response.result[0].count(userAccount)==0")
@@ -63,5 +63,21 @@ module.exports = {
     },
     addUser: function (res, obj) {console.log('addUser')
         addUserFn(res, obj)
+    },
+    checkAccount: function (res, obj) {
+        var _sql = "select count(userAccount) from userinfo where userAccount=?";
+        operationDB.dBOperation(_sql, [obj.userAccount], function (response) {
+            if(response.result[0]["count(userAccount)"] == 0){
+                res.send({
+                    code: 1,
+                    msg: "账号可用"
+                })
+            }else{
+                res .send({
+                    code: 0,
+                    msg: "账号已有"
+                })
+            }
+        })
     }
 }
