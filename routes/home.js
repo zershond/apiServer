@@ -13,7 +13,12 @@ homePage = require('../processor/homePage');
 router.get('/homePage', function (req, res, next) {
     var param = req.parmas || req.query;console.log("homepage");
     homePage.getHomePage(res, param.pageNum, function (result) {
-        res.send(result);
+        var response = {
+            code: 0,
+            data: result.result,
+            msg: ""
+        }
+        res.send(response);
     })
 })
 

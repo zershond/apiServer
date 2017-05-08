@@ -43,6 +43,7 @@ module.exports = {
                 responseObj.data.sign = response.result[0].userSign;
                 responseObj.data.icon = response.result[0].userIcon;
                 responseObj.data.status = response.result[0].status;
+                responseObj.data.userId = response.result[0].userId;
             }
             res.json(responseObj);
         })

@@ -44,7 +44,7 @@ function addUserFn(res, obj) {console.log('adduserfn')
     var _sql = 'insert into userinfo (userName, userAccount, userSign, userPhoneNum, mailBox, accountPassword, sex, age) values(?,?,?,?,?,?,?,?)';
     var _parma = [parma.userName, parma.userAccount, parma.userSign, parma.userPhoneNum, parma.mailBox, parma.accountPassword, parma.sex, parma.age];
     
-    operationDB.dBOperation(res, _sql, _parma, function (response) {
+    operationDB.dBOperation(_sql, _parma, function (response) {
         res.json(response);
     })
 }
